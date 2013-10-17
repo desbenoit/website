@@ -1,0 +1,54 @@
+# Premiers pas avec Grunt
+
+Vous avez sûrement déjà entendu parler de Grunt à droite à gauche, en conférence, voire votre boite l'utilise déjà mais vous ne savez toujours pas trop ce qu'est ce terme saugrenu digne d'un personnage de Warcraft. Soit, ce n'est pas bien grave. Sachez que Grunt est en fait un *JavaScript Task Runner*, un outil vous permettant de créer des tâches automatisées en JavaScript. Forcément ce n'est pas très parlant mais c'est tout l'intérêt de cet article, vous xpliquer ce qu'est Grunt et pourquoi il peut vous être utile dans un *workflow* de front-end dev.
+
+Je ne sais pas si c'est votre cas mais vous est-il déjà arrivé de devoir régulièrement lancer et relancer des processus tels que Sass, LESS, uglify, bref des préprocesseurs ou des munifiers à la main ? N'est-ce pas pénible ? N'est-ce pas pénible aussi de devoir indiquer à tous ses collègues comment ils doivent bosser pour que vous soyez tous cohérents ? Oui, et bien Grunt permet de résoudre ce genre de choses.
+
+Typiquement, voici un workflow assez classique :
+
+- Compiler mes ```.scss``` en ```.css```
+- Concaténer mes ```*.js``` en un seul fichier
+- Minifier (avec uglify par exemple) mon fichier JavaScript
+
+Voyons maintenant comment l'on peut mettre en place ceci via Grunt.
+
+Tout d'abord, installons Grunt. Notez que Grunt est en nodejs et que je considère que vous avez déjà nodejs d'installé.
+
+
+## Installation
+
+Il faut d'abord installer la commande grunt en global.
+
+```shell
+$ npm install -g grunt-cli
+```
+
+Puis installer grunt dans son projet en local.
+
+```shell
+$ npm install grunt --save-dev
+```
+
+Grunt est enfin installé dans votre projet.
+
+Maintenant, nous allons créer un fichier nommé ```Gruntfile.js```, c'est là que toute votre configuration Grunt se trouvera.
+
+```shell
+$ touch Gruntfile.js
+```
+
+A quoi doit ressemblait une configuration Grunt ? Voici la base :
+
+```javascript
+module.exports = function(grunt) {
+
+  // Project configuration.
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+  });
+
+  // Default task(s).
+  grunt.registerTask('default', '');
+
+};
+```
